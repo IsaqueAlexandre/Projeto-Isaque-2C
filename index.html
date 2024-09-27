@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História Interativa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding: 50px;
+        }
+        #story {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            width: 70%;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #image-area {
+            margin-top: 20px;
+        }
+        #image-area img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>O Trio Parada Dura</h1>
+    <div id="story">
+        <p id="story-text">Sebastião, Paulo e Rayssa eram amigos que adoravam explorar o parque antigo da cidade. Certo dia, enquanto procuravam por algo interessante perto de uma árvore gigante, Sebastião encontrou um mapa velho e amarelado. Ele estava cheio de desenhos estranhos e marcas que pareciam indicar um tesouro escondido. O que eles fazem?</p>
+        <div id="image-area">
+            <img id="story-image" src="inicio da historia.jfif" alt="Imagem da história">
+        </div>
+        <div class="buttons">
+            <button onclick="chooseOption('bloquinho1_opcao1')">Seguir o mapa imediatamente</button>
+            <button onclick="chooseOption('bloquinho1_opcao2')">Voltar para casa e se preparar</button>
+        </div>
+    </div>
+
+    <script>
+        function changeImage(newImageSrc) {
+            const imageElement = document.getElementById('story-image');
+            imageElement.src = newImageSrc;
+        }
+
+        function chooseOption(option) {
+            const storyText = document.getElementById('story-text');
+            const buttons = document.querySelector('.buttons');
+
+            switch (option) {
+                case 'bloquinho1_opcao1':
+                    storyText.innerHTML = "Eles decidem seguir o mapa imediatamente, motivados pela empolgação da aventura. No início da jornada, encontram uma bifurcação na trilha. Um dos caminhos é estreito e cheio de espinhos, o outro é largo e barulhento. Qual eles escolhem?";
+                    buttons.innerHTML = `
+                        <button onclick="chooseOption('bloquinho2_opcao1')">Escolher o caminho estreito e espinhoso</button>
+                        <button onclick="chooseOption('bloquinho2_opcao2')">Escolher o caminho largo e barulhento</button>`;
+                    changeImage('floresta.jfif');
+                    break;
+
+                case 'bloquinho1_opcao2':
+                    storyText.innerHTML = "Eles voltam para casa para se preparar e, equipados com lanternas e cordas, começam a jornada. Logo encontram uma bifurcação. Um dos caminhos é estreito e cheio de espinhos, o outro é largo e barulhento. Qual eles escolhem?";
+                    buttons.innerHTML = `
+                        <button onclick="chooseOption('bloquinho2_opcao1')">Escolher o caminho estreito e espinhoso</button>
+                        <button onclick="chooseOption('bloquinho2_opcao2')">Escolher o caminho largo e barulhento</button>`;
+                    changeImage('floresta.jfif');
+                    break;
+
+                case 'bloquinho2_opcao1':
+                    storyText.innerHTML = "Eles escolhem o caminho estreito e cheio de espinhos, acreditando que o mais difícil pode levar ao tesouro. Depois de algum tempo, chegam a um rio com águas rápidas. Paulo sugere usar uma corda, enquanto Sebastião sugere usar um tronco caído. Como atravessar?";
+                    buttons.innerHTML = `
+                        <button onclick="chooseOption('bloquinho3_opcao1')">Usar a corda de Paulo</button>
+                        <button onclick="chooseOption('bloquinho3_opcao2')">Usar o tronco caído</button>`;
+                    changeImage('Cavierna.jfif');
+                    break;
+
+                case 'bloquinho2_opcao2':
+                    storyText.innerHTML = "Eles seguem pelo caminho largo, pensando que será mais fácil avançar. Após um tempo, encontram um rio com águas rápidas. Paulo sugere usar uma corda, enquanto Sebastião sugere usar um tronco caído. Como atravessar?";
+                    buttons.innerHTML = `
+                        <button onclick="chooseOption('bloquinho3_opcao1')">Usar a corda de Paulo</button>
+                        <button onclick="chooseOption('bloquinho3_opcao2')">Usar o tronco caído</button>`;
+                    changeImage('Cavierna2.jfif');
+                    break;
+
+                case 'bloquinho3_opcao1':
+                    storyText.innerHTML = "Paulo amarra a corda em uma árvore e cria uma travessia segura. Eles atravessam o rio com sucesso e logo chegam a uma Cavierna escura. O mapa indica que o tesouro pode estar lá. Entrar na Cavierna ou contorná-la?";
+                    buttons.innerHTML = `
+                        <button onclick="chooseOption('bloquinho4_opcao1')">Entrar na Cavierna</button>
+                        <button onclick="chooseOption('bloquinho4_opcao2')">Contornar a Cavierna</button>`;
+                    changeImage('Cavierna2.jfif');
+                    break;
+
+                case 'bloquinho3_opcao2':
+                    storyText.innerHTML = "Eles tentam atravessar o tronco, mas quase perdem o equilíbrio nas águas rápidas. Eventualmente, conseguem atravessar e encontram uma Cavierna escura. O mapa indica que o tesouro pode estar lá. Entrar na Cavierna ou contorná-la?";
+                    buttons.innerHTML = `
+                        <button onclick="chooseOption('bloquinho4_opcao1')">Entrar na Cavierna</button>
+                        <button onclick="chooseOption('bloquinho4_opcao2')">Contornar a Cavierna</button>`;
+                    changeImage('Cavierna.jfif');
+                    break;
+
+                case 'bloquinho4_opcao1':
+                    storyText.innerHTML = "Eles entram na Cavierna escura e encontram uma parede com símbolos antigos e um pedestal no centro. Rayssa tenta decifrar os símbolos, enquanto Sebastião acha que há uma passagem secreta. Qual estratégia seguir?";
+                    buttons.innerHTML = `
+                        <button onclick="chooseOption('bloquinho5_opcao1')">Rayssa tenta decifrar os símbolos</button>
+                        <button onclick="chooseOption('bloquinho5_opcao2')">Sebastião procura uma passagem secreta</button>`;
+                    changeImage('Cavierna.jfif');
+                    break;
+
+                case 'bloquinho4_opcao2': // Contornar a Cavierna
+                    storyText.innerHTML = "Eles decidem contornar a Cavierna e, após uma longa caminhada, encontram uma floresta densa com ruínas antigas. Parece que o tesouro está perto. Continuar explorando ou acampar para descansar?";
+                    buttons.innerHTML = `
+                        <button onclick="chooseOption('bloquinho6_opcao1')">Continuar explorando</button>
+                        <button onclick="chooseOption('bloquinho6_opcao2')">Acampar para descansar</button>`;
+                    changeImage('ruinas.jfif'); // Adicione a imagem correspondente ao cenário de ruínas
+                    break;
+
+                case 'bloquinho5_opcao1':
+                case 'bloquinho5_opcao2':
+                    storyText.innerHTML = "Rayssa tenta decifrar os símbolos e uma passagem secreta se abre, levando-os a uma sala com uma arca de madeira adornada. Abrir a arca imediatamente ou investigar o ambiente?";
+                    buttons.innerHTML = `
+                        <button onclick="chooseOption('bloquinho7_opcao1')">Abrir a arca</button>
+                        <button onclick="chooseOption('bloquinho7_opcao2')">Investigar o ambiente</button>`;
+                    break;
+
+                case 'bloquinho6_opcao1':
+                    storyText.innerHTML = "Eles continuam explorando e, após algum tempo, encontram uma clareira com um altar. Ao se aproximar, descobrem que o altar guarda um antigo artefato. Pegá-lo ou deixá-lo?";
+                    buttons.innerHTML = `
+                        <button onclick="chooseOption('bloquinho8_opcao1')">Pegar o artefato</button>
+                        <button onclick="chooseOption('bloquinho8_opcao2')">Deixá-lo onde está</button>`;
+                    changeImage('altar.jfif'); // Adicione a imagem correspondente ao cenário do altar
+                    break;
+
+                case 'bloquinho6_opcao2':
+                    storyText.innerHTML = "Eles decidem acampar para descansar e, enquanto estão ao redor da fogueira, escutam ruídos estranhos na floresta. Investigar ou ignorar os sons?";
+                    buttons.innerHTML = `
+                        <button onclick="chooseOption('bloquinho9_opcao1')">Investigar os sons</button>
+                        <button onclick="chooseOption('bloquinho9_opcao2')">Ignorar os sons</button>`;
+                    break;
+
+                case 'bloquinho7_opcao1':
+                    storyText.innerHTML = "Eles abrem a arca e encontram um tesouro de moedas antigas e joias. Eles se tornam ricos e famosos na cidade! Fim da aventura.";
+                    buttons.innerHTML = '';
+                    break;
+
+                case 'bloquinho7_opcao2':
+                    storyText.innerHTML = "Eles decidem investigar o ambiente e encontram uma saída secreta, mas o tesouro não está lá. Fim da aventura.";
+                    buttons.innerHTML = '';
+                    break;
+
+                case 'bloquinho8_opcao1':
+                    storyText.innerHTML = "Eles pegam o artefato e sentem uma energia poderosa. O artefato os ajuda a resolver problemas e se tornam heróis! Fim da aventura.";
+                    buttons.innerHTML = '';
+                    break;
+
+                case 'bloquinho8_opcao2':
+                    storyText.innerHTML = "Eles decidem deixá-lo onde está e continuam sua jornada. Mas logo descobrem que o artefato era a chave para um grande tesouro. Fim da aventura.";
+                    buttons.innerHTML = '';
+                    break;
+
+                case 'bloquinho9_opcao1':
+                    storyText.innerHTML = "Eles investigam os sons e encontram um animal ferido. Decidem ajudar e, em troca, o animal os guia até um lugar cheio de tesouros. Fim da aventura.";
+                    buttons.innerHTML = '';
+                    break;
+
+                case 'bloquinho9_opcao2':
+                    storyText.innerHTML = "Eles ignoram os sons e, ao amanhecer, percebem que perderam a oportunidade de encontrar algo incrível. Fim da aventura.";
+                    buttons.innerHTML = '';
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
